@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd-daemonset
+  labels:
+    app: fluentd
+spec:
+  # modify replicas according to your case
+  # replicas: 2
+  #strategy:
+    # type: RollingUpdate #recreate
+  selector:
+    matchLabels:
+      app: fluentd
+  template:
+    metadata:
+      labels:
+        app: fluentd 
+    spec:
+      containers:
+      - name: fluentd
+        image: fluentd
+        ports:
+          - containerPort: 24224
+          
+
+
+
+
